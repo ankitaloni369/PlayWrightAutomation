@@ -20,7 +20,7 @@ module.exports = defineConfig({
 
   use: {
     browserName: 'webkit',
-    headless: false,
+    headless: true,
     screenshot: 'on',
     trace: 'retain-on-failure', // On , OFF, on Fail , On PASS
   },
