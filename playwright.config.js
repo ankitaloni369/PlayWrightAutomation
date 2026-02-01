@@ -14,7 +14,7 @@ module.exports = defineConfig({
     timeout: 50 * 1000,
   },
 
-  reporter: 'html',
+  reporter: "html",
 
   // Shared Config for all the Project below .Playwright
 

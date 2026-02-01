@@ -1,5 +1,7 @@
 const {test,expect} = require("@playwright/test");
+const { resolveObjectURL } = require("node:buffer");
 const { clear } = require("node:console");
+const { pathToFileURL } = require("node:url");
 
 test.only('Login on Client App', async ({ page }) =>
 {
@@ -47,8 +49,7 @@ test.only('Login on Client App', async ({ page }) =>
     // Wait until page is loaded 
     await page.locator("div li").first().waitFor();
     // Text Based on the Tag
-    const checkElement = page.locator("h3:has-text('iphone 13 pro')").isVisible();
-    expect(checkElement).toBeTruthy();
+    await expect(page.locator("h3:has-text('iphone 13 pro')")).toBeVisible();
     // Click on Checkout
     await page.locator("text = Checkout").click();
     // Add Payment information on the CheckOut Page 
@@ -92,16 +93,55 @@ test.only('Login on Client App', async ({ page }) =>
     // Fetch all the OrderIDs from the Invoice 
     const orderIds = page.locator("label.ng-star-inserted");
     const orderCount = await orderIds.count();
-    
+    const finalOrderID = [ ];
+
     for(let i=0;i<orderCount;i++)
     {
         const rawText = await orderIds.nth(i).innerText();
         // Clean the output as we are getting | id |
         const orderId = rawText.replace(/\|/g, '').trim();
+        finalOrderID.push(orderId);
         console.log(`Order ID ${i + 1}: ${orderId}`);
         expect(orderId.length).toBeGreaterThan(10);
     }
+    
 
+    // Click on Orders on the OrderSummary Page 
+    await page.locator("//button[@routerlink='/dashboard/myorders']").click();
+    // Wait for the table to load 
+    await page.locator("tbody").waitFor();
+
+    // Check for the Rows of the table
+    const rows = page.locator("tbody tr");
+
+    // Check Count for the rows 
+    const rowsCount = await rows.count();
+
+    // Check the OrderIDs form the Rows and Click order view button of the matching id 
+    for(let i=0;i<rowsCount;i++)
+    {
+        const rowID = (await rows.nth(i).locator("th").textContent()).trim();
+
+        if(finalOrderID.includes(rowID))
+        {
+            await Promise.all([
+            page.waitForLoadState("networkidle"),
+            rows.nth(i).locator("button").first().click()
+            ]);
+            break;
+        }
+    }
+    // Wait for the Page and table to load 
+    await page.waitForLoadState("networkidle")
+
+    // Catch the orderIDs from the page
+    await page.locator(".col-text.-main").waitFor();
+
+    // Clean the OrderIds from the Output 
+    const orderSummaryIds = (await page.locator(".col-text.-main").innerText()).replace(/\|/g, '').trim();
+
+    //Validation for the OrderIDs from the Orders page and order Summary page 
+    expect(finalOrderID.includes(orderSummaryIds)).toBeTruthy(); 
     
     await page.pause();
 
