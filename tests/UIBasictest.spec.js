@@ -13,7 +13,7 @@ test('Page Playwright test', async ({ page }) => {
 });
 
 
-test('Page Check Title',async ({page}) =>
+test.only('Page Check Title',async ({page}) =>
 {
   const firstName = page.locator("#mat-input-0");
   const lastName =  page.locator("#mat-input-1");
@@ -24,6 +24,8 @@ test('Page Check Title',async ({page}) =>
   const Allowall =  page.getByRole('button', { name: 'Allow All' });
   const CheckBoxAllow = page.locator("[type='checkbox']");
 
+  // Block API Response to the Browser 
+  page.route("**/.css",route => route.abort());
   // test.only is used if you want to run only these test
   await page.goto("https://staging-01-client.chottulink.com/register");
   console.log(await page.title())

@@ -8,7 +8,7 @@ const { on } = require('node:cluster');
 module.exports = defineConfig({
   testDir: './tests',
 
-  timeout: 40 * 1000,
+  timeout: 50 * 1000,
 
   expect: {
     timeout: 50 * 1000,
@@ -22,6 +22,7 @@ module.exports = defineConfig({
     browserName: 'webkit',
     headless: true,
     screenshot: 'on',
-    trace: 'retain-on-failure', // On , OFF, on Fail , On PASS
+    trace: 'on', // On , OFF, on Fail , On PASS
   },
+
 });

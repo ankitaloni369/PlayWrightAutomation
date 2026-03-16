@@ -8,7 +8,7 @@ const orderPayload = { orders: [{ "country": "Cuba", productOrderedId: "6960eac0
 
 let response;
 
-// .beforeAll is called once before all the test.If Multiple beforeAll are added then the execution is as per registration 
+//.beforeAll is called once before all the test.If Multiple beforeAll are added then the execution is as per registration 
 
 test.beforeAll(async () => {
     //to create a instance for the API Testing // Exposes API for Web Testing 
