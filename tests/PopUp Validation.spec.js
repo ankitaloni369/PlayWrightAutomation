@@ -23,7 +23,7 @@ test("PopUp Validation", async ({ page }) => {
     await page.locator("#name").fill("Riy");
     // Click on Confirm
     await page.locator("#confirmbtn").click();
-      // The AlerPOp-ups are Java Based Alerts
+    // The AlerPOp-ups are Java Based Alerts
     // To Handle that there is page.on method listen to the Event on the Page 
     page.on("dialog",dailog => dailog.accept);
 
