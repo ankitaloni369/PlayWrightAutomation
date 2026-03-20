@@ -88,6 +88,13 @@ This project uses **GitHub Actions** to run tests on every push.
 
 ---
 
+## 🚧 Upcoming Features
+- Advanced Playwright Configurations
+- CI/CD Integration (GitHub Actions)
+- Reporting Enhancements
+
+---
+
 ## 🤝 Contributing
 
 Feel free to fork, raise issues, and contribute improvements.
