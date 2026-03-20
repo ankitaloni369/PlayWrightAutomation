@@ -1,91 +1,71 @@
-# 🚀 Learn Playwright Automation – From Basics
+# 🚀 Playwright Automation Framework (POM + Excel Data-Driven + CI)
 
-This repository contains my hands-on learning journey with **Playwright Automation using JavaScript/TypeScript**.
-It covers foundational concepts, real test implementations, and CI integration using GitHub Actions.
-
-The goal of this project is to build strong automation fundamentals and understand how modern end-to-end testing works in real-world environments.
+A scalable **end-to-end test automation framework** built using Playwright with support for **data-driven testing using Excel**, **Page Object Model (POM)**, and **CI/CD integration**.
 
 ---
 
-## 📌 What This Repository Covers
+## 🔥 Key Features
 
-* ✅ Playwright installation & project setup
-* ✅ Writing basic UI tests
-* ✅ Locators and selectors
-* ✅ Assertions & validations
-* ✅ Page Object Model (POM) structure
-* ✅ Handling waits and synchronization
-* ✅ Running tests in headed & headless mode
-* ✅ GitHub Actions CI integration
-* ✅ Test reports & artifacts
+* ✅ Data-driven testing using Excel (ExcelJS)
+* ✅ Page Object Model (POM) architecture
+* ✅ Cross-browser testing (Chromium, Firefox, WebKit)
+* ✅ Reusable utilities & helpers
+* ✅ HTML Reporting (built-in Playwright reports)
+* ✅ CI/CD ready (GitHub Actions)
+* ✅ Clean and scalable folder structure
 
 ---
 
-## 🛠 Tech Stack
+## 📸 Demo
 
-* **Playwright**
-* **JavaScript / TypeScript**
-* **Node.js**
-* **GitHub Actions (CI/CD)**
+![alt text](image.png)
+![alt text](screenshot.png)
+![alt text](image-1.png)
+
+---
+
+## ⚡ Quick Start
+
+```bash
+git clone https://github.com/ankitaloni369/PlayWrightAutomation.git
+cd PlayWrightAutomation
+npm install
+npx playwright test
+```
 
 ---
 
 ## 📂 Project Structure
 
 ```
-├── tests/                 # Test specifications
-├── pages/                 # Page Object Models (if implemented)
-├── playwright.config.js   # Playwright configuration
-├── package.json
-└── .github/workflows/     # GitHub Actions CI workflow
+.
+├── tests/                # Test specs
+├── pages/                # Page Object Models
+├── utils/                # Excel & helper utilities
+├── test-data/            # Excel files
+├── playwright.config.js  # Playwright config
+├── .github/workflows/    # CI setup
 ```
 
 ---
 
-## ⚙️ Installation & Setup
+## 🧪 Example Test (Data-Driven)
 
-### 1️⃣ Clone the Repository
+```js
+const testData = await getExcelData("Sheet1");
 
-```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-```
-
-### 2️⃣ Install Dependencies
-
-```bash
-npm install
-```
-
-### 3️⃣ Install Playwright Browsers
-
-```bash
-npx playwright install
+for (const data of testData) {
+    test(`Login Test - ${data.username}`, async ({ page }) => {
+        await loginPage.login(data.username, data.password);
+    });
+}
 ```
 
 ---
 
-## ▶️ Running Tests
+## 📊 Reporting
 
-### Run all tests
-
-```bash
-npx playwright test
-```
-
-### Run in headed mode
-
-```bash
-npx playwright test --headed
-```
-
-### Run specific test file
-
-```bash
-npx playwright test tests/example.spec.js
-```
-
-### Show HTML report
+After execution:
 
 ```bash
 npx playwright show-report
@@ -93,50 +73,27 @@ npx playwright show-report
 
 ---
 
-## 🤖 CI Integration
+## 🔄 CI/CD Integration
 
-This project uses **GitHub Actions** to automatically:
-
-* Install dependencies
-* Install Playwright browsers
-* Run tests on every push / pull request
-* Upload test reports as artifacts
-
-Workflow file location:
-
-```
-.github/workflows/playwright.yml
-```
+This project uses **GitHub Actions** to run tests on every push.
 
 ---
 
-## 🧠 Key Learning Objectives
+## 🎯 Use Cases
 
-* Understand end-to-end automation fundamentals
-* Write stable and maintainable test scripts
-* Handle real-world automation challenges
-* Implement CI/CD for automated testing
-* Follow industry best practices
-
----
-
-## 📈 Future Enhancements
-
-* API testing with Playwright
-* Parallel execution optimization
-* Cross-browser testing
-* Docker integration
-* Advanced reporting
-* Environment-based configuration (.env setup)
+* E-commerce testing
+* Login flows
+* API + UI combined testing
+* Regression suites
 
 ---
 
-## 🎯 Purpose
+## 🤝 Contributing
 
-This repository is part of my structured learning process to build strong expertise in automation testing and modern QA engineering practices.
+Feel free to fork, raise issues, and contribute improvements.
 
 ---
 
-## 📬 Contributions
+## ⭐ Support
 
-This is a personal learning repository, but suggestions and improvements are welcome.
+If you find this useful, give it a ⭐ on GitHub!
