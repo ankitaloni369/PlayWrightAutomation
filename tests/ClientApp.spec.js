@@ -1,5 +1,4 @@
 const { test, expect } = require("@playwright/test");
-const { request, STATUS_CODES } = require("node:http");
 
 test.only('Login on Client App', async ({ page }) => {
     const email = "josephkarl@gmail.com";
@@ -15,7 +14,7 @@ test.only('Login on Client App', async ({ page }) => {
     // Block API Response to the Browser 
     //page.route('**/.{css,jpg,png,jpeg}', route => route.abort());
     // To Print the API Response and API Status in console 
-    page.on('request',request=> console.log(request.url()));
+    page.on('request', request => console.log(request.url()));
     page.on('response', response => console.log(response.url(), response.status()));
     await page.goto("https://rahulshettyacademy.com/client");
 
