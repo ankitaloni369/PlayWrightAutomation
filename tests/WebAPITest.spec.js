@@ -1,7 +1,7 @@
 const { test, expect, request } = require("@playwright/test");
 // request is Used for API testing (without browser) // expect is Used for Assertions and test to write test cases.
 
-const { APIUtils } = require("./Utils/APIUtils");  // Import Api Class from different Packages 
+const { APIUtils } = require("../Utils/APIUtils");  // Import Api Class from different Packages 
 
 const loginPayload = { userEmail: "josephkarl@gmail.com", userPassword: "password@123" }
 const orderPayload = { orders: [{ "country": "Cuba", productOrderedId: "6960eac0c941646b7a8b3e68" }] }

@@ -7,7 +7,7 @@ const { on } = require('node:cluster');
  */
 module.exports = defineConfig({
   testDir: './tests',
-
+  
   timeout: 50 * 1000,
 
   expect: {
@@ -19,7 +19,7 @@ module.exports = defineConfig({
   // Shared Config for all the Project below .Playwright
 
   use: {
-    browserName: 'webkit',
+    browserName: 'chromium',
     headless: true,
     screenshot: 'on',
     trace: 'on', // On , OFF, on Fail , On PASS

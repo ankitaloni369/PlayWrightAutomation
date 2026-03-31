@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const { asyncWrapProviders } = require('node:async_hooks');
+
 
 test("test Should take ScreenShots", async ({ page }) => {
    await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
@@ -27,10 +27,11 @@ test("test Should take ScreenShots", async ({ page }) => {
    });
 });
 
-test.only("Visual Testing on Playwright", async ({ page }) => {
+test("Visual Testing on Playwright", async ({ page }) => {
    /* On Playwright we can test the UI using the Screenshot as we run test it will capture from 
    previous Screenshot any Bug is there or not if it detect it fails the test */
    await page.goto("https:google.com");
+   // While Running the below uncomment it this is for Learning purpose as test will be failed deliberately first time 
    expect(await page.screenshot()).toMatchSnapshot("RegisterPage.png");
 
 })

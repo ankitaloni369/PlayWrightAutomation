@@ -3,7 +3,9 @@ const { DashboardPage } = require("../pageObjects/DashboardPage");
 const { CartPage } = require("../pageObjects/CartPage");
 const { OrdersReviewPage } = require("../pageObjects/OrdersReviewPage");
 const { OrdersHistoryPage } = require("../pageObjects/OrdersHistoryPage");
+
 class PoManager {
+
     constructor(page) {
         this.page = page;
         this.loginpage = new LoginPage(this.page);
@@ -32,8 +34,6 @@ class PoManager {
     getOrderHistoryPage() {
         return this.orderhistorypage;
     }
-
-
-
+    
 }
 module.exports = { PoManager };

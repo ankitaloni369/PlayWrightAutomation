@@ -4,18 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test tests/WebAPITest.spec.js --headed"
+    "test": "npx playwright test tests/WebAPITest.spec.js --headed",
+    "allure:generate": "allure generate ./allure-results --clean",
+    "allure:open": "allure open"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@playwright/test": "^1.57.0",
-    "@types/node": "^25.0.3"
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.0.3",
+    "allure-playwright": "^3.6.0"
   },
   "dependencies": {
-    "playwright": "^1.58.2",
-    "exceljs":"^4.4.0"
+    "exceljs": "^4.4.0",
+    "playwright": "^1.58.2"
   }
 }

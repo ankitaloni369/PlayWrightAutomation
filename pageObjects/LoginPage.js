@@ -2,9 +2,9 @@ class LoginPage {
 
     constructor(page) {
         this.page = page;
-        this.signInbutton = page.getByRole('button', { name: "login" });
-        this.userName = page.getByRole('textbox', { name: "Email" });
-        this.password = page.getByRole('textbox', { name: "enter your passsword" });
+        this.signInbutton = page.locator("[value='Login']");
+        this.userName = page.locator("#userEmail");
+        this.password = page.locator("#userPassword");
 
     }
 
@@ -12,11 +12,14 @@ class LoginPage {
         await this.page.goto("https://rahulshettyacademy.com/client");
     }
 
-    async validLogin(username, passsword) {
+    async validLogin(username, password) {
         await this.userName.type(username);
-        await this.password.fill(passsword);
+        await this.password.type(password);
         await this.signInbutton.click();
         await this.page.waitForLoadState('networkidle');
+        await this.page.locator(".card-body b").first().waitFor();
+
     }
+
 }
 module.exports = { LoginPage };

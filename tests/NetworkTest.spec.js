@@ -1,6 +1,6 @@
 const {test,expect,request} = require('@playwright/test');
 
-const { APIUtils } = require("./Utils/APIUtils");  // Import Api Class from different Packages 
+const { APIUtils } = require("../Utils/APIUtils");  // Import Api Class from different Packages 
 
 const loginPayload = { userEmail: "josephkarl@gmail.com", userPassword: "password@123" }
 const orderPayload = { orders: [{ "country": "Cuba", productOrderedId: "6960eac0c941646b7a8b3e68" }] }

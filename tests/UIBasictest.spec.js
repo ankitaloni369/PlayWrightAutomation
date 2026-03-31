@@ -1,5 +1,8 @@
-const { test, expect } = require("@playwright/test"); 
+const { test, expect } = require("@playwright/test");
 
+//To run the Test in Parallel in one go You need to Tell playwright that,
+//by default it execute the tests in sequentional 
+test.describe.configure({ mode: "parallel" });
 test('First Playwright test', async ({ browser }) => {
   // Open Browser , enter u/p , use awaits to tell code to await till result are shown
   const context = await browser.newContext();
@@ -9,27 +12,18 @@ test('First Playwright test', async ({ browser }) => {
 
 
 test('Page Playwright test', async ({ page }) => {
-  await page.goto('https://www.zee5.com');
+  await page.goto('https://www.primevideo.com/movie');
+  console.log(await page.title());
+  await expect(page).toHaveTitle("Prime Video: Watch, rent, or buy movies online");
 });
 
 
-test.only('Page Check Title',async ({page}) =>
-{
-  const firstName = page.locator("#mat-input-0");
-  const lastName =  page.locator("#mat-input-1");
-  const email =     page.locator("[type='email']");
-  const password =  page.locator('[name="user-password"]');
-  const confirmPassword = page.locator("#mat-input-4");
-  const signIN =    page.getByRole('button',{name:"Create Account"});
-  const Allowall =  page.getByRole('button', { name: 'Allow All' });
-  const CheckBoxAllow = page.locator("[type='checkbox']");
-
+test('Page Check Title', async ({ page }) => {
   // Block API Response to the Browser 
-  page.route("**/.css",route => route.abort());
+  // page.route("**/.css", route => route.abort());
   // test.only is used if you want to run only these test
-  await page.goto("https://staging-01-client.chottulink.com/register");
+  await page.goto("https://staging-01-client.chottulink.com/login");
   console.log(await page.title())
-  //
-  await expect(page).toHaveTitle("ChottuLink | Sign Up");
+  await expect(page).toHaveTitle("ChottuLink | Sign In");
 
 });
