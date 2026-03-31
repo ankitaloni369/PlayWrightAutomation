@@ -220,8 +220,8 @@ npx playwright install
 
 ### Issue: Tests timeout
 ```bash
-// Increase timeout in playwright.config.js
-timeout: 60000, // 60 seconds
+#// Increase timeout in playwright.config.js 
+timeout: 60000,  #// 60 seconds
 ```
 ## 🤝 Contributing
 1. Fork the repository
@@ -245,9 +245,9 @@ timeout: 60000, // 60 seconds
 
 ## 🎉 Acknowledgments
 
-Playwright team for excellent testing framework
-Open source community for valuable tools
-All contributors and users of this framework
++ Playwright team for excellent testing framework
++ Open source community for valuable tools
++ All contributors and users of this framework
 
 ## ⭐ Support
 ### If you find this framework useful, please give it a ⭐ on GitHub!
