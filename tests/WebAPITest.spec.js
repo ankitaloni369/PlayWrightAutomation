@@ -63,6 +63,4 @@ test("Place the Order", async ({ page }) => {
     //Validation for the OrderIDs from the Orders page and order Summary page 
     expect(response.orderId.includes(orderDetails)).toBeTruthy();
 
-    await page.pause();
-
 });
