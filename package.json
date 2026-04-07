@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "regression":"npx playwright test tests/tests/StructuredClientApp.spec.js",
+    "regression":"npx playwright test tests/StructuredClientApp.spec.js",
     "test": "npx playwright test tests/WebAPITest.spec.js",
     "allure:generate": "allure generate ./allure-results --clean",
     "allure:open": "allure open"
