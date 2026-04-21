@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "regression":"npx playwright test tests/StructuredClientApp.spec.js",
+    "regression": "npx playwright test tests/StructuredClientApp.spec.js",
     "test": "npx playwright test tests/WebAPITest.spec.js",
     "allure:generate": "allure generate ./allure-results --clean",
     "allure:open": "allure open"
@@ -14,12 +14,13 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@playwright/test": "^1.58.2",
+    "@cucumber/cucumber": "^12.8.1",
+    "@playwright/test": "^1.59.1",
     "@types/node": "^25.0.3",
     "allure-playwright": "^3.6.0"
   },
   "dependencies": {
     "exceljs": "^4.4.0",
-    "playwright": "^1.58.2"
+    "playwright": "^1.59.1"
   }
 }
