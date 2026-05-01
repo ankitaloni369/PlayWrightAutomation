@@ -5,20 +5,8 @@ const playwright = require("@playwright/test");
 const data = JSON.parse(JSON.stringify(require("../../Utils/PlaceOrderTestData.json")));
 setDefaultTimeout(100 * 1000);
 
-After(async function () {
-    if (this.browser) {
-        await this.browser.close();
-    }
-});
-
 Given('a login to Ecommerce website with {string} and {string}', async function (username, password) {
     // Write code here that turns the phrase above into concrete actions
-    this.browser = await playwright.chromium.launch({
-        headless: true
-    });
-    const context = await this.browser.newContext();
-    const page = await context.newPage();
-    this.poManager = new PoManager(page);
     const loginPage = this.poManager.getLoginPage();
     await loginPage.goTo();
     await loginPage.validLogin(username, password);
